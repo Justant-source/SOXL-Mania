@@ -409,9 +409,21 @@ def _parity_report(args: argparse.Namespace) -> int:
         "run_id": run.run_id,
         "data_hash": data_hash,
         "profile_key": profile_key,
-        "data_parity": {"status": data_result.status, "details": data_result.details},
-        "event_parity": {"status": event_result.status, "details": event_result.details},
-        "performance_parity": {"status": performance_result.status, "details": performance_result.details},
+        "data_parity": {
+            "status": data_result.status,
+            "details": data_result.details,
+            "first_mismatch": data_result.first_mismatch,
+        },
+        "event_parity": {
+            "status": event_result.status,
+            "details": event_result.details,
+            "first_mismatch": event_result.first_mismatch,
+        },
+        "performance_parity": {
+            "status": performance_result.status,
+            "details": performance_result.details,
+            "first_mismatch": performance_result.first_mismatch,
+        },
     }
     _print_json(payload)
     return _parity_exit_code(data_result, event_result, performance_result)
