@@ -19,3 +19,4 @@ results/
 dist/
 build/
 coverage/
+.result/
